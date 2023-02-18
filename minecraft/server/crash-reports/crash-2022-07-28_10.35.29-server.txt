@@ -1,0 +1,94 @@
+---- Minecraft Crash Report ----
+// Surprise! Haha. Well, this is awkward.
+
+Time: 2022/7/28 上午10:35
+Description: Exception in server tick loop
+
+java.util.ConcurrentModificationException
+	at java.base/java.util.HashMap.computeIfAbsent(HashMap.java:1221)
+	at com.irtimaled.bbor.common.CommonProxy.sendToPlayer(CommonProxy.java:98)
+	at com.irtimaled.bbor.common.CommonProxy.serverTick(CommonProxy.java:121)
+	at com.irtimaled.bbor.common.CommonProxy.lambda$init$0(CommonProxy.java:34)
+	at com.irtimaled.bbor.common.EventBus.publish(EventBus.java:17)
+	at com.irtimaled.bbor.common.interop.CommonInterop.tick(CommonInterop.java:37)
+	at net.minecraft.server.MinecraftServer.handler$zzb000$tick(MinecraftServer.java:1716)
+	at net.minecraft.server.MinecraftServer.method_3748(MinecraftServer.java:853)
+	at net.minecraft.server.MinecraftServer.handler$zbh000$modifiedRunLoop(MinecraftServer.java:3310)
+	at net.minecraft.server.MinecraftServer.method_29741(MinecraftServer.java:651)
+	at net.minecraft.server.MinecraftServer.method_29739(MinecraftServer.java:257)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- System Details --
+Details:
+	Minecraft Version: 1.16.5
+	Minecraft Version ID: 1.16.5
+	Operating System: Windows Server 2016 (amd64) version 10.0
+	Java Version: 17.0.2, Oracle Corporation
+	Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode, sharing), Oracle Corporation
+	Memory: 171093432 bytes (163 MB) / 1667235840 bytes (1590 MB) up to 2147483648 bytes (2048 MB)
+	CPUs: 2
+	JVM Flags: 2 total; -Xms1G -Xmx2G
+	Fabric Mods: 
+		bbor: BoundingBoxOutlineReloaded 2.4-1.16.3
+		carpet: Carpet Mod 1.4.44
+		carpet-extra: Carpet Extra 1.4.43
+		carpet-tis-addition: Carpet TIS Addition 1.31.0
+		cloth-basic-math: cloth-basic-math 0.6.0
+		cloth-config2: Cloth Config v4 4.13.49
+		fabric: Fabric API 0.42.0+1.16
+		fabric-api-base: Fabric API Base 0.4.0+3cc0f0907d
+		fabric-api-lookup-api-v1: Fabric API Lookup API (v1) 1.3.1+3cc0f0907d
+		fabric-biome-api-v1: Fabric Biome API (v1) 3.1.13+3cc0f0907d
+		fabric-command-api-v1: Fabric Command API (v1) 1.1.3+3cc0f0907d
+		fabric-commands-v0: Fabric Commands (v0) 0.2.3+3cc0f0907d
+		fabric-containers-v0: Fabric Containers (v0) 0.1.12+3cc0f0907d
+		fabric-content-registries-v0: Fabric Content Registries (v0) 0.2.5+3cc0f0907d
+		fabric-crash-report-info-v1: Fabric Crash Report Info (v1) 0.1.4+3cc0f0907d
+		fabric-dimensions-v1: Fabric Dimensions API (v1) 2.0.8+3cc0f0907d
+		fabric-entity-events-v1: Fabric Entity Events (v1) 1.2.4+3cc0f0907d
+		fabric-events-interaction-v0: Fabric Events Interaction (v0) 0.4.5+3cc0f0907d
+		fabric-events-lifecycle-v0: Fabric Events Lifecycle (v0) 0.2.2+3cc0f0907d
+		fabric-game-rule-api-v1: Fabric Game Rule API (v1) 1.0.7+3cc0f0907d
+		fabric-item-api-v1: Fabric Item API (v1) 1.2.2+3cc0f0907d
+		fabric-item-groups-v0: Fabric Item Groups (v0) 0.3.1+3cc0f0907d
+		fabric-lifecycle-events-v1: Fabric Lifecycle Events (v1) 1.2.2+3cc0f0907d
+		fabric-loot-tables-v1: Fabric Loot Tables (v1) 1.0.3+3cc0f0907d
+		fabric-mining-levels-v0: Fabric Mining Levels (v0) 0.1.4+3cc0f0907d
+		fabric-networking-api-v1: Fabric Networking API (v1) 1.0.5+3cc0f0907d
+		fabric-networking-blockentity-v0: Fabric Networking Block Entity (v0) 0.2.9+3cc0f0907d
+		fabric-networking-v0: Fabric Networking (v0) 0.3.3+3cc0f0907d
+		fabric-object-builder-api-v1: Fabric Object Builder API (v1) 1.9.6+3cc0f0907d
+		fabric-object-builders-v0: Fabric Object Builders (v0) 0.7.3+3cc0f0907d
+		fabric-particles-v1: Fabric Particles (v1) 0.2.5+3cc0f0907d
+		fabric-permissions-api-v0: fabric-permissions-api 0.1-SNAPSHOT
+		fabric-registry-sync-v0: Fabric Registry Sync (v0) 0.7.6+3cc0f0907d
+		fabric-rendering-data-attachment-v1: Fabric Rendering Data Attachment (v1) 0.1.6+3cc0f0907d
+		fabric-rendering-fluids-v1: Fabric Rendering Fluids (v1) 0.1.15+3cc0f0907d
+		fabric-resource-loader-v0: Fabric Resource Loader (v0) 0.4.8+3cc0f0907d
+		fabric-screen-handler-api-v1: Fabric Screen Handler API (v1) 1.1.6+3cc0f0907d
+		fabric-structure-api-v1: Fabric Structure API (v1) 1.1.12+3cc0f0907d
+		fabric-tag-extensions-v0: Fabric Tag Extensions (v0) 1.1.2+3cc0f0907d
+		fabric-tool-attribute-api-v1: Fabric Tool Attribute API (v1) 1.2.8+3cc0f0907d
+		fabric-transfer-api-v1: Fabric Transfer API (v1) 1.5.0+3cc0f0907d
+		fabricloader: Fabric Loader 0.14.8
+		ferritecore: FerriteCore 2.1.0
+		hopperoptimizations: Hopper Optimizations 0.3.6
+		hopperoptimizations-lithium: Lithium 0.6.4
+		java: Java HotSpot(TM) 64-Bit Server VM 17
+		krypton: Krypton 0.1.2
+		lazydfu: LazyDFU 0.1.2
+		minecraft: Minecraft 1.16.5
+		org_yaml_snakeyaml: snakeyaml 1.29
+		pca: Plusls carpet addition mod 0.2.5
+		recipecache: recipecache 0.1.0
+		servux: Servux 0.1.6
+		spark: spark 1.7.2
+		starlight: Starlight fabric-1.0.0-RC2-82ae5ca
+	Player Count: 2 / 10; [EntityPlayerMPFake['bot_yz'/147624, l='ServerLevel[world]', x=160.69, y=78.88, z=148.50], class_3222['PigeonMing'/563475, l='ServerLevel[world]', x=136.19, y=65.00, z=247.30]]
+	Data Packs: vanilla, Fabric Mods
+	Is Modded: Definitely; Server brand changed to 'fabric'
+	Type: Dedicated Server (map_server.txt)
